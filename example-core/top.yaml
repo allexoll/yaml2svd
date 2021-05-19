@@ -1,0 +1,27 @@
+---
+device:
+  vendor: VENDOR_NAME
+  name: CORE_NAME
+
+  addressUnitBits: 8
+  width: 32
+  size: 32
+  access: read-write
+  resetValue: 0x00000000
+  resetMask: 0xFFFFFFFF
+
+  peripherals:
+    - peripheral:
+      name: GPIOA
+      source: Peripherals/GPIO-0.1.0.yaml
+      baseAddress: 0xF0000000
+    - peripheral:
+      name: UART0
+      source: Peripherals/UART-0.1.0.yaml
+      baseAddress: 0xF0010000
+    - peripheral:
+      name: DESS0
+      source: Peripherals/DESS-0.1.0.yaml
+      baseAddress: 0xF0040000
+
+

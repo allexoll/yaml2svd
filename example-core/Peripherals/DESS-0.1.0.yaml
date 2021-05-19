@@ -1,0 +1,45 @@
+- peripheral:
+    groupName: DESS
+    description: Double Edge Syncronous Serial
+    registers:
+      - register:
+        - name: DATA
+          description: data fifo(32) entry
+          addressOffset: 0x00
+          fields:
+            - field:
+              - name: DATA
+                msb: 15
+                lsb: 0
+      - register:
+        - name: CTRL
+          description: Control register for this peripheral
+          addressOffset: 0x00
+          fields:
+            - field:
+              - name: OCCUPANCY
+                description: level of the fifo buffer
+                access: read-only
+                resetValue: 0
+                msb: 15
+                lsb: 0
+            - field:
+              - name: LATCH
+                description: "read: device is latching, write: latch device"
+                resetValue: 0
+                msb: 16
+                lsb: 16
+            - field:
+              - name: FIFO_FULL
+                description: indicates if Fifo is full. any word written to DATA while this bit is set will be droped
+                access: read-only
+                resetValue: 0
+                msb: 17
+                lsb: 17
+            - field: 
+              - name: FIFO_EMPTY
+                description: indicates if the fifo is empty and the last word started transmitting
+                access: read-only
+                resetValue: 1
+                msb: 18
+                lsb: 18

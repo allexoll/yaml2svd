@@ -1,0 +1,18 @@
+- peripheral: 
+    groupName: GPIO
+    description: General Purpose Input/output port A
+    registers:
+      - register:
+        - name: READ
+          description: Read input port
+          addressOffset: 0x00
+          access: read-only
+      - register:
+        - name: WRITE
+          description: Write output port
+          addressOffset: 0x04
+          access: write-only
+      - register:
+        - name: DIRECTION
+          description: Direction of port. 0 => input, 1 => output
+          addressOffset: 0x08

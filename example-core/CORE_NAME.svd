@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device>
+	<vendor>VENDOR_NAME</vendor>
+	<name>CORE_NAME</name>
+	<addressUnitBits>8</addressUnitBits>
+	<width>32</width>
+	<size>32</size>
+	<access>read-write</access>
+	<resetValue>0</resetValue>
+	<resetMask>4294967295</resetMask>
+	<peripherals>
+		<peripheral>
+			<groupName>GPIO</groupName>
+			<description>General Purpose Input/output port A</description>
+			<registers>
+				<register>
+					<name>READ</name>
+					<description>Read input port</description>
+					<addressOffset>0</addressOffset>
+					<access>read-only</access>
+				</register>
+				<register>
+					<name>WRITE</name>
+					<description>Write output port</description>
+					<addressOffset>4</addressOffset>
+					<access>write-only</access>
+				</register>
+				<register>
+					<name>DIRECTION</name>
+					<description>Direction of port. 0 =&gt; input, 1 =&gt; output</description>
+					<addressOffset>8</addressOffset>
+				</register>
+			</registers>
+			<name>GPIOA</name>
+			<baseAddress>4026531840</baseAddress>
+		</peripheral>
+		<peripheral>
+			<groupName>UART</groupName>
+			<description>Universal Async Receiver Transmiter</description>
+			<registers>
+				<register>
+					<name>DATA</name>
+					<description>DATA port. write to add word to push to tx buffer, read to pop from rx buffer</description>
+					<addressOffset>0</addressOffset>
+					<fields>
+						<field>
+							<name>DATA</name>
+							<description>Tx Fifo entry, Rx Fifo exit</description>
+							<resetValue>0</resetValue>
+							<msb>7</msb>
+							<lsb>0</lsb>
+						</field>
+					</fields>
+				</register>
+				<register>
+					<name>STATUS</name>
+					<description>Status register</description>
+					<addressOffset>4</addressOffset>
+					<fields>
+						<field>
+							<name>TX_IRQ_EN</name>
+							<description>Tx interrupt enable</description>
+							<msb>0</msb>
+							<lsb>0</lsb>
+						</field>
+						<field>
+							<name>RX_IRQ_EN</name>
+							<description>Rx Interrupt enable</description>
+							<msb>1</msb>
+							<lsb>1</lsb>
+						</field>
+						<field>
+							<name>TX_INT</name>
+							<description>TX Interrupt</description>
+							<access>read-only</access>
+							<msb>8</msb>
+							<lsb>8</lsb>
+						</field>
+						<field>
+							<name>RX_INT</name>
+							<description>RX Interrupt</description>
+							<access>read-only</access>
+							<msb>9</msb>
+							<lsb>9</lsb>
+						</field>
+						<field>
+							<name>RX_FIFO_NOT_EMPTY</name>
+							<description>1 when rx fifo contains at least a word</description>
+							<access>read-only</access>
+							<msb>15</msb>
+							<lsb>15</lsb>
+						</field>
+						<field>
+							<name>TX_FIFO_AVAILABLE_DEPTH</name>
+							<description>number of available spots in the TX fifo</description>
+							<access>read-only</access>
+							<msb>23</msb>
+							<lsb>16</lsb>
+						</field>
+						<field>
+							<name>RX_FIFO_OCCUPANCY</name>
+							<description>number of spots filled in the Rx FIFO</description>
+							<access>read-only</access>
+							<msb>31</msb>
+							<lsb>24</lsb>
+						</field>
+					</fields>
+				</register>
+				<register>
+					<name>CLOCK_DIVIDER</name>
+					<description>clock divider for uart</description>
+					<addressOffset>8</addressOffset>
+					<fields>
+						<field>
+							<name>CLOCK_DIVIDER</name>
+							<description>clock divider for UART</description>
+							<resetValue>0</resetValue>
+							<msb>19</msb>
+							<lsb>0</lsb>
+						</field>
+					</fields>
+				</register>
+				<register>
+					<name>FRAME_CONFIG</name>
+					<description>Uart frame configuration</description>
+					<addressOffset>12</addressOffset>
+					<fields>
+						<field>
+							<name>DATA_LENGHT</name>
+							<description>length of data - 1 (0x07 =&gt; 8 bit uart)</description>
+							<resetValue>7</resetValue>
+							<msb>2</msb>
+							<lsb>0</lsb>
+						</field>
+						<field>
+							<name>DATA_PARITY</name>
+							<description>data parity</description>
+							<resetValue>0</resetValue>
+							<msb>10</msb>
+							<lsb>8</lsb>
+							<enumeratedValues>
+								<enumeratedValue>
+									<name>NONE</name>
+									<description>No parity</description>
+									<value>0</value>
+								</enumeratedValue>
+								<enumeratedValue>
+									<name>EVEN</name>
+									<description>Even parity</description>
+									<value>1</value>
+								</enumeratedValue>
+								<enumeratedValue>
+									<name>ODD</name>
+									<description>Odd parity</description>
+									<value>2</value>
+								</enumeratedValue>
+							</enumeratedValues>
+						</field>
+						<field>
+							<name>DATA_STOP</name>
+							<description>uart stop bit</description>
+							<resetValue>0</resetValue>
+							<msb>16</msb>
+							<lsb>16</lsb>
+							<enumeratedValues>
+								<enumeratedValue>
+									<name>ONE</name>
+									<description>one stop bit</description>
+									<value>0</value>
+								</enumeratedValue>
+								<enumeratedValue>
+									<name>TWO</name>
+									<description>two stop bits</description>
+									<value>1</value>
+								</enumeratedValue>
+							</enumeratedValues>
+						</field>
+					</fields>
+				</register>
+				<register>
+					<name>DIRECTION</name>
+					<description>Direction of port. 0 =&gt; input, 1 =&gt; output</description>
+					<addressOffset>8</addressOffset>
+				</register>
+			</registers>
+			<name>UART0</name>
+			<baseAddress>4026597376</baseAddress>
+		</peripheral>
+		<peripheral>
+			<groupName>DESS</groupName>
+			<description>Double Edge Syncronous Serial</description>
+			<registers>
+				<register>
+					<name>DATA</name>
+					<description>data fifo(32) entry</description>
+					<addressOffset>0</addressOffset>
+					<fields>
+						<field>
+							<name>DATA</name>
+							<msb>15</msb>
+							<lsb>0</lsb>
+						</field>
+					</fields>
+				</register>
+				<register>
+					<name>CTRL</name>
+					<description>Control register for this peripheral</description>
+					<addressOffset>0</addressOffset>
+					<fields>
+						<field>
+							<name>OCCUPANCY</name>
+							<description>level of the fifo buffer</description>
+							<access>read-only</access>
+							<resetValue>0</resetValue>
+							<msb>15</msb>
+							<lsb>0</lsb>
+						</field>
+						<field>
+							<name>LATCH</name>
+							<description>read: device is latching, write: latch device</description>
+							<resetValue>0</resetValue>
+							<msb>16</msb>
+							<lsb>16</lsb>
+						</field>
+						<field>
+							<name>FIFO_FULL</name>
+							<description>indicates if Fifo is full. any word written to DATA while this bit is set will be droped</description>
+							<access>read-only</access>
+							<resetValue>0</resetValue>
+							<msb>17</msb>
+							<lsb>17</lsb>
+						</field>
+						<field>
+							<name>FIFO_EMPTY</name>
+							<description>indicates if the fifo is empty and the last word started transmitting</description>
+							<access>read-only</access>
+							<resetValue>1</resetValue>
+							<msb>18</msb>
+							<lsb>18</lsb>
+						</field>
+					</fields>
+				</register>
+			</registers>
+			<name>DESS0</name>
+			<baseAddress>4026793984</baseAddress>
+		</peripheral>
+	</peripherals>
+</device>
