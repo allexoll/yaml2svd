@@ -12,7 +12,7 @@ The example core contains one GPIO and UART based on [VexRiscv](https://github.c
 
 ```shell
 $ pip install -r requirements.txt
-$ python3 yaml2svd.py example-core/top.yaml example-core/CORE_NAME.yaml
+$ python3 yaml2svd.py example-core/top.yaml example-core/CORE_NAME.svd
 ```
 
 
