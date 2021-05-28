@@ -60,6 +60,13 @@ exclude_list = [
 for regex in exclude_list:
     output_xml = re.sub(regex, '', output_xml)
 
+replace_list = {
+    "<device>" : '<device  schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD.xsd" >'
+}
+
+for element in replace_list.items():
+    output_xml = output_xml.replace(element[0], element[1])
+    
 # write output file
 f.write(output_xml)
 
