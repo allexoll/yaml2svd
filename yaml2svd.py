@@ -36,6 +36,9 @@ for peripheral in top_content["device"]["peripherals"]:
     source_content["name"] = peripheral["name"]
     # copy base address to output
     source_content["baseAddress"] = peripheral["baseAddress"]
+    # copy interrupt information (optional)
+    if 'interrupt' in peripheral:
+        source_content["interrupt"] = peripheral["interrupt"]
     # copy peripheral content to output
     export = {"peripheral": source_content}
     # add peripheral to existing list
