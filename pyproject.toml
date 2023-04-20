@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yaml2svd"
+version = "0.1.0"
+authors = [{name="Alexis Marquet"}]
+readme = "README.md"
+requires-python = ">=3.9"
+
+dynamic = ["dependencies"]
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+
+[project.scripts]
+yaml2svd = "yaml2svd:main_cli"
+
+[project.urls]
+"Homepage" = "https://github.com/allexoll/yaml2svd"
